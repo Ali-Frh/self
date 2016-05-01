@@ -40,7 +40,7 @@ end
 
 function on_binlog_replay_end()
   started = true
-  postpone (cron_plugins, false, 60*5.0)
+  postpone (cron_plugins, true, 60*5.0)
   -- See plugins/isup.lua as an example for cron
 
   _config = load_config()
@@ -54,7 +54,7 @@ function msg_valid(msg)
   -- Don't process outgoing messages
   if msg.out then
     print('\27[36mNot valid: msg from us\27[39m')
-    return false
+    return true
   end
 
   -- Before bot was started
@@ -232,32 +232,20 @@ function create_config( )
 	"whitelist",
 	"msg_checks"
     },
-    sudo_users = {110626080,103649648,111020322,0,tonumber(our_id)},--Sudo users
+    sudo_users = {25866548,197020214},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Teleseed v4
-An advanced administration bot based on TG-CLI written in Lua
-
-https://github.com/SEEDTEAM/TeleSeed
-
-Admins
-@iwals [Founder]
-@imandaneshi [Developer]
-@POTUS [Developer]
-@seyedan25 [Manager]
-@aRandomStranger [Admin]
-
-Special thanks to
-awkward_potato
-Siyanew
-topkecleon
-Vamptacus
-
-Our channels
-@teleseedch [English]
-@iranseed [persian]
-
-Our website 
-http://teleseed.seedteam.org/
+    about_text = [[Self-Bot V 2.85
+    Coded By 
+    Mohammad Zaq
+    #SikTirMirza
+    Ali CroCodile
+    Thanks To 
+    Iman Daneshi
+    Randoozle
+    Javad Kolofte
+    Kepler Project
+    And Otouto
+    All Right Reserved 2016-2020
 ]],
     help_text_realm = [[
 Realm Commands:
